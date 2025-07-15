@@ -8,7 +8,11 @@ KEYWORDS = [
     "видеоконференция"
 ]
 
-@app.route("/tenders")
+
+@app.route("/")
+def home():
+    return "Сервер работает. Перейди на /tenders для получения данных."
+
 def get_tenders():
     url = "https://goszakupki.by/tenders/posted"
     headers = {"User-Agent": "Mozilla/5.0"}
