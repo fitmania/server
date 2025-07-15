@@ -5,14 +5,18 @@ from bs4 import BeautifulSoup
 app = Flask(__name__)
 
 KEYWORDS = [
-    "видеоконференция"
+    "трансляция",
+    "видеоконференция",
+    "видеотрансляция",
+    "светодиодный экран",
+    "программно-техническое"
 ]
-
 
 @app.route("/")
 def home():
     return "Сервер работает. Перейди на /tenders для получения данных."
 
+@app.route("/tenders")
 def get_tenders():
     url = "https://goszakupki.by/tenders/posted"
     headers = {"User-Agent": "Mozilla/5.0"}
@@ -48,4 +52,4 @@ def get_tenders():
     return jsonify(results)
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000)
+    app.run()
