@@ -1,6 +1,7 @@
 from flask import Flask, jsonify
 import requests
 from bs4 import BeautifulSoup
+import os
 
 app = Flask(__name__)
 
@@ -16,7 +17,7 @@ KEYWORDS = [
 def home():
     return "Сервер работает. Перейди на /tenders для получения данных."
 
-@app.route("/tenders/posted/")
+@app.route("/tenders")
 def get_tenders():
     url = "https://goszakupki.by/tenders/posted"
     headers = {"User-Agent": "Mozilla/5.0"}
@@ -52,7 +53,5 @@ def get_tenders():
     return jsonify(results)
 
 if __name__ == "__main__":
-    import os
-    port = int(os.environ.get("PORT", 5000))  # Render передаёт порт через переменную PORT
+    port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port)
-
