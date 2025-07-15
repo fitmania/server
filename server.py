@@ -16,7 +16,7 @@ KEYWORDS = [
 def home():
     return "Сервер работает. Перейди на /tenders для получения данных."
 
-@app.route("/tenders")
+@app.route("/tenders/posted/")
 def get_tenders():
     url = "https://goszakupki.by/tenders/posted"
     headers = {"User-Agent": "Mozilla/5.0"}
